@@ -15,7 +15,8 @@ public class Cell : MonoBehaviour
     [SerializeField] private GameObject flag;
     [SerializeField] private bool flagged=false;
     [SerializeField] private GameObject outline;
-
+    [SerializeField] private GameObject explosion;
+    [SerializeField] private GameObject[] shieldParts;
     public void Gen(Generation gen, Vector2Int genPosition )
     {
         this.gen = gen;
@@ -60,7 +61,13 @@ public class Cell : MonoBehaviour
         }
         if (number < 0)
         {
-            Debug.Log("QQBOM");
+            Vector3 spawnShieldParts = numSpawn.position;
+            spawnShieldParts.y += 1;
+            Instantiate(explosion, numSpawn.position, Quaternion.identity);
+            foreach(GameObject obj in shieldParts)
+            {
+                Instantiate(obj, spawnShieldParts, Quaternion.identity);
+            }
         }
 
     }
