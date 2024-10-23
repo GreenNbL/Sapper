@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Generation : MonoBehaviour
 {
+    /// <summary>
+    /// //
+    /// </summary>
     private int[,] intMap;
     [SerializeField] private Vector2Int mapSize;
     [SerializeField] private int mines;
@@ -96,8 +99,4 @@ public class Generation : MonoBehaviour
         return mines;
     }
     
-    void Update()
-    {
-        
-    }
 }
