@@ -92,35 +92,15 @@ public class Generation : MonoBehaviour
         int spawned = 0;
         while (spawned < mines)
         {
-            for (int i = 0; i < mapSize.x; i++)
+            Vector2Int pos= new Vector2Int(Random.Range(0,mapSize.x), Random.Range(0,mapSize.y));
+            if(intMap[pos.x, pos.y]>=0)
             {
-                for(int j = 0; j < mapSize.y; j++)
-                {
-                    
-                    if (Random.Range(0, mapSize.x*mapSize.y) == 0 && CurrentCountMines()< mines && intMap[i, j] >= 0)
-                    {
-                        intMap[i, j] = -999;
-                        spawned++;
-                    }
-                }
+                intMap[pos.x, pos.y] = -999;
+                spawned++;
             }
+            
         }
     }
-    private int CurrentCountMines()
-    {
-        int mines = 0;
-
-        for (int i = 0; i < mapSize.x; i++)
-        {
-            for (int j = 0; j < mapSize.y; j++)
-            {
-                if (intMap[i,j]<0)
-                {
-                    mines++;
-                }
-            }
-        }
-        return mines;
-    }
+    
     
 }
