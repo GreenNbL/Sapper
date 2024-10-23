@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
+    [SerializeField] private Generation gen;
+    [SerializeField] private Vector2Int genPosition;
     [SerializeField] public int number;
     [SerializeField] private Transform numSpawn;
     [SerializeField] private bool opened;
@@ -12,6 +15,13 @@ public class Cell : MonoBehaviour
     [SerializeField] private GameObject flag;
     [SerializeField] private bool flagged=false;
     [SerializeField] private GameObject outline;
+
+    public void Gen(Generation gen, Vector2Int genPosition )
+    {
+        this.gen = gen;
+        this.genPosition = genPosition;
+
+    }
     public void Start()
     {
         outline.SetActive(false);
@@ -32,11 +42,17 @@ public class Cell : MonoBehaviour
         }
        
     }
-    private void OpenCell()
-    {
+    public void OpenCell()
+    { 
+        if (opened)
+            return;
         opened = true;
         shield.SetActive(false);
-
+       
+        if(number ==0)
+        {
+            gen.OpenEmpty(genPosition);
+        }
         if(number > 0 && number < nums.Length+1 )
         {
             Instantiate(nums[number-1],numSpawn.position, Quaternion.identity, numSpawn);
