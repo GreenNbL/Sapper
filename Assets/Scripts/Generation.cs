@@ -5,7 +5,7 @@ using UnityEngine;
 public class Generation : MonoBehaviour
 {
     private Cell[,] cellMap;
-    private int[,] intMap;
+    [SerializeField] private int[,] intMap;
     //[SerializeField] private GameObject panel;
     [SerializeField] private GameObject wall;
     private Animator sceneApper;
@@ -14,7 +14,10 @@ public class Generation : MonoBehaviour
     [SerializeField] private GameObject cell;
     [SerializeField] private float spacing;
 
-
+    public Vector2Int getMapSize()
+    {
+        return mapSize;
+    }
     private void Start()
     {
        

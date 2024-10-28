@@ -212,6 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 397632653}
+  - component: {fileID: 397632654}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -228,13 +229,27 @@ Transform:
   m_GameObject: {fileID: 397632652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.2585, y: 1.3897893, z: 0.70050997}
+  m_LocalPosition: {x: 7.2585, y: -2.92, z: 0.70050997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &397632654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397632652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feac1a04a55683d4da55d3e6d3b60e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 8
+  gen: {fileID: 1995053434}
 --- !u!1001 &474670021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -490,7 +505,6 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -572,19 +586,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 397632653}
   m_LocalEulerAnglesHint: {x: 63.96, y: 180, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feac1a04a55683d4da55d3e6d3b60e12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 8
 --- !u!1 &1054447276 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a0457a3362572745978146ca323a70d, type: 3}
@@ -1296,8 +1297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fd7e477ed0d384faf38321a1096c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
-  mapSize: {x: 10, y: 10}
+  wall: {fileID: 919132149155446097, guid: 10c0c64f57f77494e83effe0f82c4289, type: 3}
+  mapSize: {x: 15, y: 15}
   mines: 10
   cell: {fileID: 1322304142}
   spacing: 0.85
