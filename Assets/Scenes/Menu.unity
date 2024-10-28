@@ -3798,6 +3798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XInput: {fileID: 1402109607}
   YInput: {fileID: 585613829}
+  MinesInput: {fileID: 2117674953}
 --- !u!1 &1726896060
 GameObject:
   m_ObjectHideFlags: 0
@@ -4364,6 +4365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XInput: {fileID: 1402109607}
   YInput: {fileID: 585613829}
+  MinesInput: {fileID: 2117674953}
 --- !u!114 &2130749837
 MonoBehaviour:
   m_ObjectHideFlags: 0

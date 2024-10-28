@@ -12,7 +12,9 @@ public class Generation : MonoBehaviour
     private int mines;
     [SerializeField] private GameObject cell;
     [SerializeField] private float spacing;
-   
+    [SerializeField] private GameObject exit;
+    [SerializeField] private GameObject restart;
+
 
     public Vector2Int getMapSize()
     {
@@ -65,6 +67,8 @@ public class Generation : MonoBehaviour
                 Instantiate(wall, new Vector3(i, -1, j) * spacing, Quaternion.identity, transform); 
             }
         }
+        Instantiate(exit, new Vector3(0, 0.5f,-2) * spacing, Quaternion.identity, transform);
+        Instantiate(restart, new Vector3(0, 0.5f, -1) * spacing, Quaternion.identity, transform);
     }
     private void GenerateRealMap()
     {
