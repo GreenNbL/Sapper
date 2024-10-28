@@ -23,6 +23,14 @@ public class Cell : MonoBehaviour
         this.genPosition = genPosition;
 
     }
+    public bool GetStateOpen()
+    {
+        return opened;
+    }
+    public bool GetStateFlagged()
+    {
+        return flagged;
+    }
     public void Start()
     {
         outline.SetActive(false);
@@ -61,6 +69,7 @@ public class Cell : MonoBehaviour
         }
         if (number < 0)
         {
+            StartCoroutine(ExitToMenu());
             Vector3 spawnShieldParts = numSpawn.position;
             spawnShieldParts.y += 1;
             Instantiate(explosion, numSpawn.position, Quaternion.identity);
@@ -69,6 +78,14 @@ public class Cell : MonoBehaviour
                 Instantiate(obj, spawnShieldParts, Quaternion.identity);
             }
         }
+
+    }
+    private IEnumerator ExitToMenu()
+    {
+        
+        yield return new WaitForSeconds(2);
+        Scenes scene = GetComponent<Scenes>();
+        scene.SwitchScene(0);
 
     }
     private void OnMouseEnter()

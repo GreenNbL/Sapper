@@ -14,8 +14,40 @@ public class Generation : MonoBehaviour
     [SerializeField] private float spacing;
     [SerializeField] private GameObject exit;
     [SerializeField] private GameObject restart;
+    private bool win = false;
 
+    public void Update()
+    {
+        win = false;
+        for (int i = 0; i < mapSize.x; i++)
+        {
+            for (int j = 0; j < mapSize.y; j++)
+            {
+              
+                 if (intMap[i, j] >= 0 && cellMap[i, j].GetStateOpen())
+                 {
+                     win = true;
 
+                 }
+                 else
+                 {
+                     if (intMap[i, j] < 0 && cellMap[i, j].GetStateFlagged())
+                     {
+                         win = true;
+                     }
+                     else
+                     {
+                        win = false;
+                        break;
+                     }
+                     
+                 }
+              
+            }
+        }
+        if (win)
+            Debug.Log("WINNER!!!");
+    }
     public Vector2Int getMapSize()
     {
         return mapSize;
