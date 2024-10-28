@@ -13,6 +13,6 @@ public class Player : MonoBehaviour
     }
     private void Move()
     {
-        transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Time.deltaTime * speed);
+        transform.Translate(new Vector3(-Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical")) * Time.deltaTime * speed);
     }
 }

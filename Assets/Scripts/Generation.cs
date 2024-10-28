@@ -6,6 +6,9 @@ public class Generation : MonoBehaviour
 {
     private Cell[,] cellMap;
     private int[,] intMap;
+    //[SerializeField] private GameObject panel;
+    [SerializeField] private GameObject wall;
+    private Animator sceneApper;
     [SerializeField] private Vector2Int mapSize;
     [SerializeField] private int mines;
     [SerializeField] private GameObject cell;
@@ -14,11 +17,45 @@ public class Generation : MonoBehaviour
 
     private void Start()
     {
+       
         intMap = new int[mapSize.x, mapSize.y];
         cellMap = new Cell[mapSize.x, mapSize.y];
         GenerateMines();
         GenerateNums();
         GenerateRealMap();
+        GenerateWalls();
+        //sceneApper = GetComponent<Animator>();
+        //sceneApper.Play("Fade out");
+        
+    }
+    private void GenerateWalls()
+    {
+        int y_start = -1;
+        int x_start = -1;
+        int  width= 20;
+        for (int i =-1; i < mapSize.x+1; i++)
+        {
+            for ( int k=0;k< width; k++)
+            { 
+                Instantiate(wall, new Vector3(i, 0, x_start-k) * spacing, Quaternion.identity, transform);
+                Instantiate(wall, new Vector3(i, 0, x_start + mapSize.x + 1 + k) * spacing, Quaternion.identity, transform);
+            }
+        }
+        for (int j = -1; j < mapSize.y + 1+ width*2; j++)
+        {
+            for (int k = 0; k < width; k++)
+            {
+                Instantiate(wall, new Vector3(y_start-k, 0, j-width) * spacing, Quaternion.identity, transform);
+                Instantiate(wall, new Vector3(y_start+k + mapSize.y + 1, 0, j-width) * spacing, Quaternion.identity, transform);
+            }
+        }
+        for (int i = -1; i < mapSize.x+1; i++)
+        {
+            for (int j = -1; j < mapSize.y+1; j++)
+            {
+                Instantiate(wall, new Vector3(i, -1, j) * spacing, Quaternion.identity, transform); 
+            }
+        }
     }
     private void GenerateRealMap()
     {
