@@ -6,36 +6,42 @@ public class Generation : MonoBehaviour
 {
     private Cell[,] cellMap;
     [SerializeField] private int[,] intMap;
-    //[SerializeField] private GameObject panel;
     [SerializeField] private GameObject wall;
     private Animator sceneApper;
     [SerializeField] private Vector2Int mapSize;
-    [SerializeField] private int mines;
+    private int mines;
     [SerializeField] private GameObject cell;
     [SerializeField] private float spacing;
+   
 
     public Vector2Int getMapSize()
     {
         return mapSize;
     }
+    private void FillMapSize()
+    {
+        mapSize.x = MapSize.x;
+        mapSize.y = MapSize.y;
+        mines = MapSize.amountMines;
+        Debug.Log(mines);
+
+
+    }
     private void Start()
     {
-       
+        FillMapSize();
         intMap = new int[mapSize.x, mapSize.y];
         cellMap = new Cell[mapSize.x, mapSize.y];
         GenerateMines();
         GenerateNums();
         GenerateRealMap();
         GenerateWalls();
-        //sceneApper = GetComponent<Animator>();
-        //sceneApper.Play("Fade out");
-        
     }
     private void GenerateWalls()
     {
         int y_start = -1;
         int x_start = -1;
-        int  width= 20;
+        int  width= 25;
         for (int i =-1; i < mapSize.x+1; i++)
         {
             for ( int k=0;k< width; k++)

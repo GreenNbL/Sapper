@@ -14,9 +14,4 @@ public class ButtonX : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    public void Auit()
-    {
-        Application.Quit();
-    }
-
 }

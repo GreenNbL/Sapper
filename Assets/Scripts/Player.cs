@@ -27,7 +27,8 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
-        mapSize = gen.getMapSize();
+        mapSize.x = MapSize.x;
+        mapSize.y = MapSize.y;
         transform.position = new Vector3(mapSize.x/2-1, 0, mapSize.y/2+2);
         startPos = transform.position;
     }
