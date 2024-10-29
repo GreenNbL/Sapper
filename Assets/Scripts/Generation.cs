@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Generation : MonoBehaviour
@@ -14,11 +15,13 @@ public class Generation : MonoBehaviour
     [SerializeField] private float spacing;
     [SerializeField] private GameObject exit;
     [SerializeField] private GameObject restart;
+    [SerializeField] private GameObject winner;
+    [SerializeField] private GameObject player;
     private bool win = false;
+    private bool objectWinSpawned = false;
 
     public void Update()
     {
-        win = false;
         for (int i = 0; i < mapSize.x; i++)
         {
             for (int j = 0; j < mapSize.y; j++)
@@ -46,7 +49,18 @@ public class Generation : MonoBehaviour
             }
         }
         if (win)
-            Debug.Log("WINNER!!!");
+        {
+            if (!objectWinSpawned)
+            { 
+                Win();
+                objectWinSpawned = true;
+            }
+        }
+    }
+    private void Win()
+    {
+        Vector3 pos = player.transform.position;
+        Instantiate(winner, new Vector3(pos.x+10.8f, pos.y-0.3f, pos.z-8.3f) * spacing, Quaternion.Euler(64, 0, 0));
     }
     public Vector2Int getMapSize()
     {
