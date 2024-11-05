@@ -8,6 +8,8 @@ public class InputFields : MonoBehaviour
     [SerializeField] public TMP_InputField XInput;
     [SerializeField] public TMP_InputField YInput;
     [SerializeField] public TMP_InputField MinesInput;
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private GameObject musicObject;
 
     public void LoadMapSize()
     {
@@ -17,7 +19,11 @@ public class InputFields : MonoBehaviour
             MapSize.y = y_value;
         if (int.TryParse(MinesInput.text, out int mines_value))
             MapSize.amountMines = mines_value;
-
+    }
+    public void Update()
+    {
+        musicObject.GetComponent<AudioSource>().volume = musicSlider.value;
+        Sounds.volume = musicSlider.value;
     }
 
 }

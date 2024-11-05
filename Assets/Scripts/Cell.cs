@@ -55,6 +55,7 @@ public class Cell : MonoBehaviour
     { 
         if (opened)
             return;
+        Sounds.PlayOpenCell();
         opened = true;
         shield.SetActive(false);
        
@@ -82,7 +83,7 @@ public class Cell : MonoBehaviour
     }
     private IEnumerator ExitToMenu()
     {
-        
+        Sounds.PlayBoom();
         yield return new WaitForSeconds(2);
         Scenes scene = GetComponent<Scenes>();
         scene.SwitchScene(0);
@@ -92,6 +93,7 @@ public class Cell : MonoBehaviour
     {
         outline.SetActive(true);
     }
+
     private void OnMouseExit()
     {
         outline.SetActive(false);
@@ -100,6 +102,7 @@ public class Cell : MonoBehaviour
     {
         flagged=!flagged;
         flag.SetActive(flagged);
+        Sounds.PlayFlagCell();
     }
     
 }

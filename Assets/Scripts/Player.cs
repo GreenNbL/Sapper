@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
+    private AudioSource audioSrc => GetComponent<AudioSource>();
     [SerializeField] private float speed;
     [SerializeField] private Generation gen;
     private Vector3 startPos;
@@ -27,6 +28,8 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
+        Sounds.audioSource = audioSrc;
+        Sounds.PlayBackGroundSound();
         mapSize.x = MapSize.x;
         mapSize.y = MapSize.y;
         transform.position = new Vector3(mapSize.x/2-1, 0, mapSize.y/2+2);
